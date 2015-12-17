@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "ContentUIvewController.h"
 @interface AppDelegate ()
 
 @end
@@ -16,7 +16,15 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    CGRect  screenBounds =  [[UIScreen mainScreen] bounds];
+    self.window  = [[UIWindow alloc ] initWithFrame:screenBounds];
+    UINavigationController* nav = [[UINavigationController alloc] init];
+    //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [nav setNavigationBarHidden:YES animated:NO];
+    ContentUIvewController * login = [[ContentUIvewController alloc] init];
+    self.window.rootViewController = [nav initWithRootViewController: login ];
+    [self.window  makeKeyAndVisible];
     return YES;
 }
 
